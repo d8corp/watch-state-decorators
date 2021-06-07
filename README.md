@@ -12,11 +12,11 @@ State management decorators based on [watch-state](https://www.npmjs.com/package
 ### Installation
 npm
 ```bash
-npm i @watch-state/react
+npm i @watch-state/decorators
 ```
 yarn
 ```bash
-yarn add @watch-state/react
+yarn add @watch-state/decorators
 ```
 ### Using
 You can use one of the next decorators
