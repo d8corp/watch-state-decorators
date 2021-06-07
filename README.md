@@ -1,8 +1,6 @@
-<img src="https://raw.githubusercontent.com/d8corp/watch-state/v3/img/logo.svg" align="left" width="80" height="80" alt="Watch-State logo by Mikhail Lysikov">
+<img src="https://raw.githubusercontent.com/d8corp/watch-state/v3/img/logo.svg" align="left" width="70" height="70" alt="Watch-State logo by Mikhail Lysikov">
 
 # &nbsp; @watch-state/decorators
-
-&nbsp;  
 
 [![NPM](https://img.shields.io/npm/v/@watch-state/decorators.svg)](https://github.com/d8corp/watch-state-decorators/blob/master/CHANGELOG.md)
 [![downloads](https://img.shields.io/npm/dm/@watch-state/decorators.svg)](https://www.npmjs.com/package/@watch-state/decorators)
