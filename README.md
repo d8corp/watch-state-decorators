@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/d8corp/watch-state/v3/img/logo.svg" align="left" width="70" height="70" alt="Watch-State logo by Mikhail Lysikov">
+<img src="https://raw.githubusercontent.com/d8corp/watch-state/v3/img/logo.svg" align="left" width="90" height="90" alt="Watch-State logo by Mikhail Lysikov">
 
 # &nbsp; @watch-state/decorators
 
