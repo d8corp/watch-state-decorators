@@ -1,4 +1,4 @@
-import Cache from 'watch-state/Cache'
+import {Cache} from 'watch-state'
 import getDecors from '../getDecors'
 
 interface CachePropertyDescriptor {

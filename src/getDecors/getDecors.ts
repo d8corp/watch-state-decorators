@@ -1,5 +1,4 @@
-import State from 'watch-state/State'
-import Cache from 'watch-state/Cache'
+import {State, Cache} from 'watch-state'
 
 const VALUES = Symbol('state values')
 

@@ -1,4 +1,4 @@
-import Watch, {Watcher} from 'watch-state/Watch'
+import {Watch, Watcher} from 'watch-state'
 
 type Target <P extends string = string> = object & Record<P, Watcher>
 
