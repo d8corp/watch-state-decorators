@@ -1,4 +1,4 @@
-import State from 'watch-state/State';
+import { State } from 'watch-state';
 export interface StateValues {
     [key: string]: State;
 }
