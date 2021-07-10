@@ -1,17 +1,35 @@
-import {Event} from 'watch-state'
+import {globalEvent} from 'watch-state'
 
-const e = new Event()
+export function event <T extends Function> (target: Object, propertyKey: string | symbol, descriptor?: TypedPropertyDescriptor<T>): any {
+  if (descriptor) {
+    return {
+      value: function () {
+        globalEvent.start()
+        const result = descriptor.value.apply(this, arguments)
+        globalEvent.end()
+        return result
+      } as unknown as T,
+      enumerable: true
+    }
+  } else {
+    let run = target[propertyKey]
 
-export function event <T extends Function> (target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>): TypedPropertyDescriptor<T> {
-  return {
-    value: function () {
-      e.start()
-      const result = descriptor.value.apply(this, arguments)
-      e.end()
+    function getter () {
+      globalEvent.start()
+      const result = run.apply(this, arguments)
+      globalEvent.end()
       return result
-    } as unknown as T,
-    enumerable: true
+    }
+
+    Object.defineProperty(target, propertyKey, {
+      get () {
+        return run ? getter : run
+      },
+      set (runner) {
+        run = runner
+      }
+    })
   }
 }
 
-export default event
+export default event as PropertyDecorator

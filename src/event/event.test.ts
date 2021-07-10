@@ -23,4 +23,27 @@ describe('event', () => {
     expect(log.length).toBe(2)
     expect(log[1]).toBe('(value)')
   })
+  test('field event', () => {
+    class Test {
+      @state foo = 0
+      @state bar = 0
+
+      @event test = () => {
+        this.foo = 1
+        this.bar = 2
+      }
+    }
+
+    const test = new Test()
+
+    const log = []
+
+    new Watch(() => {
+      log.push([test.foo, test.bar])
+    })
+
+    test.test()
+
+    expect(log).toEqual([[0, 0], [1, 2]])
+  })
 })

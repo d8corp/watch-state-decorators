@@ -1,4 +1,4 @@
-import {Watch} from 'watch-state'
+import {Watch, scope} from 'watch-state'
 import {state} from '..'
 
 describe('state', () => {
@@ -79,7 +79,7 @@ describe('state', () => {
       if (timer.counting) {
         new Watch(() => {
           const interval = setInterval(() => timer.count++, 50)
-          Watch.activeWatcher.onDestroy(() => clearInterval(interval))
+          scope.activeWatcher.onDestroy(() => clearInterval(interval))
         })
         new Watch(() => count = timer.count)
       }
@@ -116,7 +116,7 @@ describe('state', () => {
       @state count = 0
       start () {
         const interval = setInterval(() => this.count++, 50)
-        Watch.activeWatcher?.onDestroy(() => clearInterval(interval))
+        scope.activeWatcher?.onDestroy(() => clearInterval(interval))
       }
     }
     const timer = new Timer()
