@@ -1,4 +1,6 @@
-<img src="https://raw.githubusercontent.com/d8corp/watch-state/v3.3.1/img/logo.svg" align="left" width="90" height="90" alt="Watch-State logo by Mikhail Lysikov">
+<a href="https://www.npmjs.com/package/watch-state">
+  <img src="https://raw.githubusercontent.com/d8corp/watch-state/v3.3.1/img/logo.svg" align="left" width="90" height="90" alt="Watch-State logo by Mikhail Lysikov">
+</a>
 
 # &nbsp; @watch-state/decorators
 
