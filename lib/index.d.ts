@@ -1,4 +1,4 @@
 export * from './event';
 export * from './state';
 export * from './cache';
-export * from './watch';
+export * from './getDecors';

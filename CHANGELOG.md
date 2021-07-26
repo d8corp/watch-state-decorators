@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2
+### v1.2.0 [![26.07.2021](https://img.shields.io/date/1627316011)](https://github.com/d8corp/watch-state-decorators/tree/v1.2.0)
+- include `getDecors` into the exports
+- removed default exports
+- removed `watch` decorator
+
 ## v1.1
 ### v1.1.0 [![10.07.2021](https://img.shields.io/date/1625941605)](https://github.com/d8corp/watch-state-decorators/tree/v1.1.0)
 - updated [watch-state](https://www.npmjs.com/package/watch-state) version

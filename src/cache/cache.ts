@@ -1,5 +1,5 @@
 import {Cache} from 'watch-state'
-import getDecors from '../getDecors'
+import {getDecors} from '../getDecors'
 
 interface CachePropertyDescriptor {
   get?: () => any
@@ -23,5 +23,3 @@ export function cache (target: object, propertyKey: string, descriptor: CachePro
     }
   }
 }
-
-export default cache

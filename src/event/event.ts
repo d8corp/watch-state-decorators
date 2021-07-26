@@ -31,5 +31,3 @@ export function event <T extends Function> (target: Object, propertyKey: string 
     })
   }
 }
-
-export default event as PropertyDecorator

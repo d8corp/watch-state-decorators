@@ -23,5 +23,3 @@ export function getDecors <K extends Mapping, T extends Target> (target: T): Dec
   }
   return target[VALUES as keyof T]
 }
-
-export default getDecors

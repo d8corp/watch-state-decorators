@@ -3,4 +3,4 @@ interface CachePropertyDescriptor {
     set?: (value: any) => void;
 }
 export declare function cache(target: object, propertyKey: string, descriptor: CachePropertyDescriptor): CachePropertyDescriptor;
-export default cache;
+export {};

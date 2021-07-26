@@ -24,7 +24,8 @@ yarn add @watch-state/decorators
 ### Using
 You can use one of the next decorators
 ```javascript
-import {watch, state, cache, event} from '@watch-state/decorators'
+import {Watch} from 'watch-state'
+import {state, cache, event} from '@watch-state/decorators'
 
 class Counter {
   // fields
@@ -39,15 +40,12 @@ class Counter {
   @event tick () {
     this.value++
   }
-  @watch run () {
-    console.log(this.value, this.square)
-  }
 }
 
 
 const counter = new Counter()
 
-counter.run()
+new Watch(() => console.log(counter.value, counter.square))
 // console.log(1, 1)
 
 counter.tick()

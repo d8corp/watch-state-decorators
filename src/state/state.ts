@@ -1,4 +1,4 @@
-import getDecors from '../getDecors'
+import {getDecors} from '../getDecors'
 import {State} from 'watch-state'
 
 export interface StateValues {
@@ -30,5 +30,3 @@ export function state (target: Object, propertyKey: string, desc?): any {
     enumerable: true
   }
 }
-
-export default state
