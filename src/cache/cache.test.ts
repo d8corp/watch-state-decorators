@@ -1,4 +1,5 @@
-import {watch, state, event, cache} from '..'
+import {state, event, cache} from '..'
+import {Watch} from "watch-state";
 
 describe('cache', () => {
   test('two get cache', () => {
@@ -50,8 +51,8 @@ describe('cache', () => {
       @cache get square () {
         return this.value ** 2
       }
-      @watch run () {
-        log.push([this.value, this.square])
+      run () {
+        return new Watch(() => log.push([this.value, this.square]))
       }
     }
 
@@ -76,8 +77,8 @@ describe('cache', () => {
       @cache get square () {
         return this.value ** 2
       }
-      @watch run () {
-        log.push([this.value, this.square])
+      run () {
+        return new Watch(() => log.push([this.value, this.square]))
       }
     }
 

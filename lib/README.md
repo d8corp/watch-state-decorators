@@ -12,7 +12,7 @@
 
 State management decorators based on [watch-state](https://www.npmjs.com/package/watch-state)
 
-### Installation
+### Install
 npm
 ```bash
 npm i @watch-state/decorators
@@ -21,7 +21,7 @@ yarn
 ```bash
 yarn add @watch-state/decorators
 ```
-### Using
+### Usage
 You can use one of the next decorators
 ```javascript
 import {Watch} from 'watch-state'

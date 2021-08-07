@@ -1,6 +1,9 @@
 # Changelog
 
 ## v1.2
+### v1.2.1 [![07.08.2021](https://img.shields.io/date/1628364404)](https://github.com/d8corp/watch-state-decorators/tree/v1.2.1)
+- updated watch-state to `v3.4.0`
+
 ### v1.2.0 [![26.07.2021](https://img.shields.io/date/1627316011)](https://github.com/d8corp/watch-state-decorators/tree/v1.2.0)
 - include `getDecors` into the exports
 - removed default exports
