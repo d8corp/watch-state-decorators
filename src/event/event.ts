@@ -12,21 +12,19 @@ export function event <T extends Function> (target: Object, propertyKey: string 
       enumerable: true
     }
   } else {
-    let run = target[propertyKey]
-
-    function getter () {
-      globalEvent.start()
-      const result = run.apply(this, arguments)
-      globalEvent.end()
-      return result
-    }
+    const EVENT = Symbol('event')
 
     Object.defineProperty(target, propertyKey, {
       get () {
-        return run ? getter : run
+        return this[EVENT]
       },
       set (runner) {
-        run = runner
+        this[EVENT] = (...args) => {
+          globalEvent.start()
+          const result = runner(...args)
+          globalEvent.end()
+          return result
+        }
       }
     })
   }

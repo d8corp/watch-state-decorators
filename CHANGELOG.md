@@ -1,6 +1,10 @@
 # Changelog
 
 ## v1.2
+
+### v1.2.2 [![08.08.2021](https://img.shields.io/date/1628445947)](https://github.com/d8corp/watch-state-decorators/tree/v1.2.2)
+- fixed a bug of event decorator using on function fields
+
 ### v1.2.1 [![07.08.2021](https://img.shields.io/date/1628364404)](https://github.com/d8corp/watch-state-decorators/tree/v1.2.1)
 - updated watch-state to `v3.4.0`
 
@@ -10,6 +14,7 @@
 - removed `watch` decorator
 
 ## v1.1
+
 ### v1.1.0 [![10.07.2021](https://img.shields.io/date/1625941605)](https://github.com/d8corp/watch-state-decorators/tree/v1.1.0)
 - updated [watch-state](https://www.npmjs.com/package/watch-state) version
 - `event` decorator supports fields now
