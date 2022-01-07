@@ -16,10 +16,10 @@ export type Decors <K extends Mapping, T extends Target<keyof K>> = {
   [key in keyof K]: Types<T[key]>[K[key]]
 }
 
-export function getDecors <K extends Mapping, T extends Target> (target: T): Decors<K, T> {
+export function getDecors <K extends Mapping, T extends Target = any> (target: T): Decors<K, T> {
   if (!(VALUES in target)) {
     // @ts-ignore
-    target[VALUES] = {} as Decors<K, T>
+    target[VALUES] = {}
   }
   return target[VALUES as keyof T]
 }

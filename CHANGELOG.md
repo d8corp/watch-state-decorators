@@ -2,6 +2,10 @@
 
 ## v1.2
 
+### v1.2.3 [![07.01.2022](https://img.shields.io/date/1641558486)](https://github.com/d8corp/watch-state-decorators/tree/v1.2.3)
+- updated watch-state to `v3.4.1`
+- improved `getDecors` types
+
 ### v1.2.2 [![08.08.2021](https://img.shields.io/date/1628445947)](https://github.com/d8corp/watch-state-decorators/tree/v1.2.2)
 - fixed a bug of event decorator using on function fields
 
