@@ -1,15 +1,13 @@
-import {state, event, cache} from '..'
-import {Watch} from "watch-state";
+import { Watch } from 'watch-state'
+
+import { cache, event, state } from '..'
 
 describe('cache', () => {
   test('two get cache', () => {
     class Test {
-      @cache get test1 () {
-        return 1
-      }
-      @cache get test2 () {
-        return 2
-      }
+      readonly test1 = 1
+
+      readonly test2 = 2
     }
 
     const test = new Test()
@@ -18,10 +16,10 @@ describe('cache', () => {
     expect(test.test2).toBe(2)
   })
   test('useless autorun', () => {
-    let logger = []
+    const logger = []
 
     class Test {
-      @state value = 0
+      @state accessor value = 0
       @cache get log () {
         logger.push(this.value)
         return this.value
@@ -44,13 +42,15 @@ describe('cache', () => {
   test('combine', () => {
     const log = []
     class Counter {
-      @state value = 1
+      @state accessor value = 1
       @event tick () {
         this.value++
       }
+
       @cache get square () {
         return this.value ** 2
       }
+
       run () {
         return new Watch(() => log.push([this.value, this.square]))
       }
@@ -70,13 +70,15 @@ describe('cache', () => {
   test('combine non-event', () => {
     const log = []
     class Counter {
-      @state value = 1
+      @state accessor value = 1
       tick () {
         this.value++
       }
+
       @cache get square () {
         return this.value ** 2
       }
+
       run () {
         return new Watch(() => log.push([this.value, this.square]))
       }

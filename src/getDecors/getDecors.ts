@@ -1,4 +1,4 @@
-import {State, Cache} from 'watch-state'
+import { type Cache, type State } from 'watch-state'
 
 const VALUES = Symbol('state values')
 
@@ -18,7 +18,7 @@ export type Decors <K extends Mapping, T extends Target<keyof K>> = {
 
 export function getDecors <K extends Mapping, T extends Target = any> (target: T): Decors<K, T> {
   if (!(VALUES in target)) {
-    // @ts-ignore
+    // @ts-expect-error: TODO
     target[VALUES] = {}
   }
   return target[VALUES as keyof T]

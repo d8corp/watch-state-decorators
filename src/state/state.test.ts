@@ -1,25 +1,20 @@
-import {Watch, scope} from 'watch-state'
-import {state} from '..'
+import { onDestroy, Watch } from 'watch-state'
+
+import { state } from '.'
 
 describe('state', () => {
   test('empty value', () => {
     class Test {
-      @state test
+      @state accessor test
     }
     const test1 = new Test()
     expect(test1.test).toBe(undefined)
   })
   test('initializer', () => {
     class Test {
-      test1?: number
-      test2?: number
+      @state accessor test1 = 1
+      @state accessor test2 = 2
     }
-    Object.defineProperties(Test.prototype, {
-      test1: state(Test.prototype, 'test1', {initializer: () => {
-        return 1
-      }}),
-      test2: state(Test.prototype, 'test2', {value: 2})
-    })
 
     const tests = new Test()
 
@@ -28,8 +23,8 @@ describe('state', () => {
   })
   test('timeout', async () => {
     class Timer {
-      @state counting = true
-      @state count = 0
+      @state accessor counting = true
+      @state accessor count = 0
     }
     const timer = new Timer()
     let count
@@ -70,8 +65,8 @@ describe('state', () => {
   })
   test('destructor', async () => {
     class Timer {
-      @state counting = true
-      @state count = 0
+      @state accessor counting = true
+      @state accessor count = 0
     }
     const timer = new Timer()
     let count
@@ -79,9 +74,11 @@ describe('state', () => {
       if (timer.counting) {
         new Watch(() => {
           const interval = setInterval(() => timer.count++, 50)
-          scope.activeWatcher.onDestroy(() => clearInterval(interval))
+          onDestroy(() => clearInterval(interval))
         })
-        new Watch(() => count = timer.count)
+        new Watch(() => {
+          count = timer.count
+        })
       }
     })
 
@@ -112,11 +109,11 @@ describe('state', () => {
   })
   test('update destructor', async () => {
     class Timer {
-      @state counting = true
-      @state count = 0
+      @state accessor counting = true
+      @state accessor count = 0
       start () {
         const interval = setInterval(() => this.count++, 50)
-        scope.activeWatcher?.onDestroy(() => clearInterval(interval))
+        onDestroy(() => clearInterval(interval))
       }
     }
     const timer = new Timer()

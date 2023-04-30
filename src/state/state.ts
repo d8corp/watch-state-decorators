@@ -1,32 +1,26 @@
-import {getDecors} from '../getDecors'
-import {State} from 'watch-state'
+import { State } from 'watch-state'
 
-export interface StateValues {
-  [key: string]: State
-}
+import { getDecors } from '../getDecors'
 
-export function state (target: Object, propertyKey: string, desc?): any {
-  const value = desc ? (
-    desc.initializer ? desc.initializer() : desc.value
-  ) : undefined
+export type StateValues = Record<string, State>
+
+export function state <This, Value = unknown> (
+  value: ClassAccessorDecoratorTarget<This, Value>,
+  context: ClassAccessorDecoratorContext<This, Value>,
+) {
+  const propertyKey = context.name
 
   return {
-    get (): any {
+    get (this) {
+      return getDecors(this)[propertyKey].value
+    },
+    set (this, val) {
+      (getDecors(this) as StateValues)[propertyKey as string].value = val
+    },
+    init (initialValue) {
       const values = getDecors(this)
-      if (!values[propertyKey]) {
-        values[propertyKey] = new State(value)
-      }
-      return values[propertyKey].value
+      values[propertyKey] = new State(initialValue)
+      return initialValue
     },
-    set (v: any): void {
-      const values: StateValues = getDecors(this) as StateValues
-
-      if (propertyKey in values) {
-        values[propertyKey].value = v
-      } else {
-        values[propertyKey] = new State(v)
-      }
-    },
-    enumerable: true
   }
 }

@@ -1,5 +1,7 @@
-import {Watch} from 'watch-state'
-import {state, event} from '..'
+import { Watch } from 'watch-state'
+
+import { state } from '../state'
+import { event } from '.'
 
 describe('event', () => {
   test('brackets', () => {
@@ -8,8 +10,9 @@ describe('event', () => {
         this.left = left
         this.right = right
       }
-      @state left = ''
-      @state right = ''
+
+      @state accessor left = ''
+      @state accessor right = ''
     }
     const test = new Test()
     const log = []
@@ -25,8 +28,8 @@ describe('event', () => {
   })
   test('field event', () => {
     class Test {
-      @state foo = 0
-      @state bar = 0
+      @state accessor foo = 0
+      @state accessor bar = 0
 
       @event test = () => {
         this.foo = 1
@@ -43,6 +46,35 @@ describe('event', () => {
     })
 
     test.test()
+
+    expect(log).toEqual([[0, 0], [1, 2]])
+  })
+  test('setter event', () => {
+    class Test {
+      #value
+      @state accessor foo = 0
+      @state accessor bar = 0
+
+      @event set test (value: number) {
+        this.#value = value
+        this.foo = value + 1
+        this.bar = value + 2
+      }
+
+      get test () {
+        return this.#value
+      }
+    }
+
+    const test = new Test()
+
+    const log = []
+
+    new Watch(() => {
+      log.push([test.foo, test.bar])
+    })
+
+    test.test = 0
 
     expect(log).toEqual([[0, 0], [1, 2]])
   })

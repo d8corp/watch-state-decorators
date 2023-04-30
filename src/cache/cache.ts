@@ -1,25 +1,19 @@
-import {Cache} from 'watch-state'
-import {getDecors} from '../getDecors'
+import { Cache } from 'watch-state'
 
-interface CachePropertyDescriptor {
-  get?: () => any
-  set?: (value: any) => void
-}
+import { getDecors } from '../getDecors'
 
-export function cache (target: object, propertyKey: string, descriptor: CachePropertyDescriptor): CachePropertyDescriptor {
-  const origin = descriptor.get
+export function cache <This, Value = unknown> (
+  value: () => Value,
+  context: ClassGetterDecoratorContext<This, Value>,
+) {
+  const propertyKey = context.name
+  return function (): Value {
+    const decorators = getDecors(this)
 
-  if (origin) {
-    return {
-      get () {
-        const decorators = getDecors(this)
-
-        if (propertyKey in decorators) {
-          return decorators[propertyKey].value
-        } else {
-          return (decorators[propertyKey] = new Cache(origin.bind(this), true)).value
-        }
-      }
+    if (propertyKey in decorators) {
+      return decorators[propertyKey].value
+    } else {
+      return (decorators[propertyKey] = new Cache(value.bind(this), true)).value
     }
   }
 }
