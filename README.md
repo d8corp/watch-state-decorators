@@ -24,12 +24,12 @@ yarn add @watch-state/decorators
 ### Usage
 You can use one of the next decorators
 ```javascript
-import {Watch} from 'watch-state'
-import {state, cache, event} from '@watch-state/decorators'
+import { Watch } from 'watch-state'
+import { state, cache, event } from '@watch-state/decorators'
 
 class Counter {
   // fields
-  @state value = 1
+  @state accessor value = 1
 
   // accessors
   @cache get square () {
